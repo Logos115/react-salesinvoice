@@ -1,6 +1,8 @@
 const Sequelize = require('sequelize');
-const pdf = require('pdf-creator-node');
+const puppeteer = require('puppeteer');
+const handlebars = require('handlebars');
 const fs = require('fs');
+const path = require('path');
 
 module.exports = {
   getAllChairDelivery,
@@ -347,13 +349,8 @@ function generateDeliveryPDF(req, res, next) {
 }
 
 async function _generateDeliveryPDF(type, id, host) {
-  const html = fs.readFileSync('server/view/doc/delivery.hbs', 'utf8');
-
-  const options = {
-    format: 'A4',
-    orientation: 'portrait',
-    border: '10mm',
-  };
+  const templatePath = path.join(__dirname, '../view/doc/delivery.hbs');
+  const templateSource = fs.readFileSync(templatePath, 'utf8');
 
   const deliveryInfo = await db[`${type}ToOrder`].findOne({
     where: { id },
@@ -446,17 +443,42 @@ async function _generateDeliveryPDF(type, id, host) {
         : '',
   };
 
-  var document = {
-    html,
-    data: {
-      invoiceNum,
-      client,
-      delivery,
-      product,
-      signURL: deliveryInfo.signURL ? `${host}/${deliveryInfo.signURL}` : null,
+  // Compile Handlebars template
+  const template = handlebars.compile(templateSource);
+  const html = template({
+    invoiceNum,
+    client,
+    delivery,
+    product,
+    signURL: deliveryInfo.signURL ? `${host}/${deliveryInfo.signURL}` : null,
+  });
+
+  // Generate PDF using Puppeteer
+  const browser = await puppeteer.launch({
+    headless: true,
+    args: ['--no-sandbox', '--disable-setuid-sandbox'],
+  });
+  const page = await browser.newPage();
+  await page.setContent(html, { waitUntil: 'networkidle0' });
+  
+  const pdfPath = path.join(__dirname, `../uploads/deliveryPDFs/${type}-${deliveryInfo.id}.pdf`);
+  // Ensure directory exists
+  const pdfDir = path.dirname(pdfPath);
+  if (!fs.existsSync(pdfDir)) {
+    fs.mkdirSync(pdfDir, { recursive: true });
+  }
+
+  await page.pdf({
+    path: pdfPath,
+    format: 'A4',
+    printBackground: true,
+    margin: {
+      top: '10mm',
+      right: '10mm',
+      bottom: '10mm',
+      left: '10mm',
     },
-    path: `server/uploads/deliveryPDFs/${type}-${deliveryInfo.id}.pdf`,
-    type: '',
-  };
-  await pdf.create(document, options);
+  });
+
+  await browser.close();
 }
