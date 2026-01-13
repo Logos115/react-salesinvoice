@@ -390,7 +390,7 @@ async function _generateDeliveryPDF(type, id, host) {
 
   const invoiceNum = `I-${deliveryInfo.SalesOrder.Seller.prefix}${new Date(
     deliveryInfo.SalesOrder.createdAt
-  ).getFullYear()}-${('000' + deliveryInfo.SalesOrder.id).substr(-3)}`;
+  ).getFullYear()}-${('000' + deliveryInfo.SalesOrder.id).slice(-3)}`;
 
   const client = {
     name: deliveryInfo.SalesOrder.name,

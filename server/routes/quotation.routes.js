@@ -70,7 +70,7 @@ function getAll(req, res, next) {
             item.Seller.prefix
           }${tmp.getFullYear()}${tmp.getMonth()}${tmp.getDate()}${(
             '000' + item.quotationNum
-          ).substr(-3)}`;
+          ).slice(-3)}`;
           return item;
         })
       )
@@ -89,7 +89,7 @@ function getCurrent(req, res, next) {
             item.Seller.prefix
           }${tmp.getFullYear()}${tmp.getMonth()}${tmp.getDate()}${(
             '000' + item.quotationNum
-          ).substr(-3)}`;
+          ).slice(-3)}`;
           return item;
         })
       )

@@ -120,7 +120,7 @@ async function create(req, res, next) {
             quotation.Seller.prefix
           }${tmp.getFullYear()}${tmp.getMonth()}${tmp.getDate()}${(
             "000" + quotation.quotationNum
-          ).substr(-3)}`;
+          ).slice(-3)}`;
           restParams.topSketchURL = `${protocol}://${host}/${await drawDeskTop(
             {
               quotationNum,
@@ -239,7 +239,7 @@ async function update(req, res, next) {
             quotation.Seller.prefix
           }${tmp.getFullYear()}${tmp.getMonth()}${tmp.getDate()}${(
             "000" + quotation.quotationNum
-          ).substr(-3)}`;
+          ).slice(-3)}`;
           restParams.topSketchURL = `${protocol}://${host}/${await drawDeskTop(
             {
               quotationNum,

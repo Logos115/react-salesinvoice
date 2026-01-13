@@ -96,7 +96,7 @@ function getAll(req, res, next) {
         salesOrders.map((item) => {
           item.invoiceNum = `I-${item.Seller.prefix}${new Date(
             item.createdAt
-          ).getFullYear()}-${('000' + item.invoiceNum).substr(-3)}`;
+          ).getFullYear()}-${('000' + item.invoiceNum).slice(-3)}`;
           return item;
         })
       )
@@ -112,7 +112,7 @@ function getCurrent(req, res, next) {
         salesOrders.map((item) => {
           item.invoiceNum = `I-${item.Seller.prefix}${new Date(
             item.createdAt
-          ).getFullYear()}-${('000' + item.invoiceNum).substr(-3)}`;
+          ).getFullYear()}-${('000' + item.invoiceNum).slice(-3)}`;
           return item;
         })
       )

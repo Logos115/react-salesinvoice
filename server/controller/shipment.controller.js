@@ -41,7 +41,7 @@ async function create(req, res, next) {
     const poNumber = await getPONum(currentYear)
     products.forEach(product => {
       restParams.poNum = poNumber
-      restParams.itemType = product.productType.substr(0, 1).toUpperCase()
+      restParams.itemType = product.productType.slice(0, 1).toUpperCase()
       restParams.stockId = product.productId
       restParams.qty = product.productQty
   
@@ -150,7 +150,7 @@ async function update(req, res, next) {
     const poNumber = await getPONum(currentYear)
     products.forEach(product => {
       restParams.poNum = poNumber
-      restParams.itemType = product.productType.substr(0, 1).toUpperCase()
+      restParams.itemType = product.productType.slice(0, 1).toUpperCase()
       restParams.stockId = product.productId
       restParams.qty = product.productQty
   
