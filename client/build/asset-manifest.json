@@ -1,24 +1,17 @@
 {
   "files": {
-    "main.css": "/static/css/main.6dea0f05.chunk.css",
-    "main.js": "/static/js/main.2582b0d0.chunk.js",
-    "main.js.map": "/static/js/main.2582b0d0.chunk.js.map",
-    "runtime-main.js": "/static/js/runtime-main.68e592fb.js",
-    "runtime-main.js.map": "/static/js/runtime-main.68e592fb.js.map",
-    "static/js/2.a44040ad.chunk.js": "/static/js/2.a44040ad.chunk.js",
-    "static/js/2.a44040ad.chunk.js.map": "/static/js/2.a44040ad.chunk.js.map",
-    "static/js/3.c9762f84.chunk.js": "/static/js/3.c9762f84.chunk.js",
-    "static/js/3.c9762f84.chunk.js.map": "/static/js/3.c9762f84.chunk.js.map",
+    "main.css": "/static/css/main.e6c13ad2.css",
+    "main.js": "/static/js/main.d798ef01.js",
+    "static/js/453.0aa4fa50.chunk.js": "/static/js/453.0aa4fa50.chunk.js",
+    "static/media/chinese.msyh.ttf": "/static/media/chinese.msyh.554cdb5e811b2cb02d4f.ttf",
+    "static/media/receipt_logo.png": "/static/media/receipt_logo.15fa4131b992ea32696d.png",
     "index.html": "/index.html",
-    "static/css/main.6dea0f05.chunk.css.map": "/static/css/main.6dea0f05.chunk.css.map",
-    "static/js/2.a44040ad.chunk.js.LICENSE.txt": "/static/js/2.a44040ad.chunk.js.LICENSE.txt",
-    "static/media/chinese.msyh.554cdb5e.ttf": "/static/media/chinese.msyh.554cdb5e.ttf",
-    "static/media/receipt_logo.15fa4131.png": "/static/media/receipt_logo.15fa4131.png"
+    "main.e6c13ad2.css.map": "/static/css/main.e6c13ad2.css.map",
+    "main.d798ef01.js.map": "/static/js/main.d798ef01.js.map",
+    "453.0aa4fa50.chunk.js.map": "/static/js/453.0aa4fa50.chunk.js.map"
   },
   "entrypoints": [
-    "static/js/runtime-main.68e592fb.js",
-    "static/js/2.a44040ad.chunk.js",
-    "static/css/main.6dea0f05.chunk.css",
-    "static/js/main.2582b0d0.chunk.js"
+    "static/css/main.e6c13ad2.css",
+    "static/js/main.d798ef01.js"
   ]
 }
