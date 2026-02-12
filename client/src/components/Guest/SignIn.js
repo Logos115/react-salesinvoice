@@ -54,10 +54,11 @@ export default connect(mapStateToProps, { login })((props) => {
       .then()
       .catch((err) => {
         form.password.value = '';
+        const message = err.response?.data?.message ?? err.message ?? 'Unable to connect. Please try again.';
         Swal.fire({
           icon: 'error',
           title: 'Login Failure',
-          html: err.response.data.message.replace('\n', '<br />'),
+          html: String(message).replace(/\n/g, '<br />'),
           allowOutsideClick: false,
         });
       });

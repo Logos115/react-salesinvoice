@@ -69,10 +69,11 @@ export default connect(mapStateToProps)((props) => {
       })
       .catch((err) => {
         // handle error
+        const message = err.response?.data?.message ?? err.message ?? 'Something went wrong. Please try again.';
         Swal.fire({
           icon: 'error',
           title: 'SignUp Failure',
-          html: err.response.data.message.replace('\n', '<br />'),
+          html: String(message).replace(/\n/g, '<br />'),
           allowOutsideClick: false,
         });
       })

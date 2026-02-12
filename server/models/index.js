@@ -5,10 +5,10 @@ const path = require('path');
 const Sequelize = require('sequelize');
 const basename = path.basename(__filename);
 const env = process.env.NODE_ENV || 'development';
-const config = require(__dirname + '/../config/config.json')[env];
+const config = require(__dirname + '/../config/config.js')[env];
 
 if (!config) {
-  throw new Error(`Database configuration for environment "${env}" not found in config.json`);
+  throw new Error(`Database configuration for environment "${env}" not found in config.js`);
 }
 
 console.log(`Database: Using ${env} configuration (host: ${config.host}, database: ${config.database})`);

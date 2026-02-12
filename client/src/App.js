@@ -63,8 +63,9 @@ const theme = createTheme({
   },
 });
 
-// axios.defaults.baseURL = "http://localhost:4000/api";
-axios.defaults.baseURL = "https://blueoceanblue.com/api";
+// Use local API when running on localhost, production API otherwise
+const isLocalDev = typeof window !== 'undefined' && window.location.hostname === 'localhost';
+axios.defaults.baseURL = isLocalDev ? 'http://localhost:4000/api' : 'https://blueoceanblue.com/api';
 
 axios.interceptors.request.use(
   function (config) {
