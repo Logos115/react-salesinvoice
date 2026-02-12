@@ -6,7 +6,9 @@ export const login = (data) => (dispatch) => {
       .post('/user/login', data)
       .then((response) => {
         // handle success
-        const { token, type } = response.data;
+        const data = response?.data;
+        if (!data || !data.token) return reject(new Error('Invalid login response'));
+        const { token, type } = data;
         const isAdmin = type === 'admin' ? true : false;
         axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
         dispatch({ type: 'auth/loginSuccess', payload: { token, isAdmin } });
